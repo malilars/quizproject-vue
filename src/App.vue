@@ -1,13 +1,33 @@
 <template>
-  <div id="app" class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="jumbotron">
-                <h1 class="text-center"><router-link to="/">The Quiz App</router-link></h1>
-            </div>
+  <div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">The Quiz App</a>
         </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <router-link to="/">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/quiz-options">Create new quiz</router-link>
+          </li>
+          <li>
+            <router-link to="/take-quiz">Show all quizzes</router-link>          
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="app" class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="splash">
+                  <h1 class="text-center">The Quiz App</h1>
+              </div>
+          </div>
+      </div>
+      <router-view/>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -24,11 +44,76 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;*/
-  color: #2c3e50;
+  color: #fff;
   margin-top: 60px;
-    background: url('https://www.ashfordcastle.com/-/media/ttc/rch/ashford-castle/main-carousel/desktop/ash-cinema-03-1400x568.jpg?h=568&la=en&w=1400&hash=063A1FA50A24A246731D58A0ECDD48C91F6F1A21')
+}
 
+.panel {
+  color: #000;
 }
-.jumbotron {
+
+body {
+  background: url('./assets/bg-pattern.png'), linear-gradient(to left,#610a08,#dc2430);
 }
+
+nav.navbar {
+  border-radius: 0px;
+}
+.splash h1 {
+  color: #fff !important;
+  font-size: 100px;
+  letter-spacing: -10px;
+}
+
+.mb-5 {
+    margin-bottom:5em;
+}
+h3.heading {
+    background-color: rgba(0, 0, 0, 0.11);
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    border-top: 4px solid #610a084d;
+    line-height: 1.4;
+}
+
+input[type=text].form-control, input[type=number].form-control {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff6b;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #fff;
+}
+
+select.form-control {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+}
+select.form-control option {
+    border-bottom: 1px solid #ffffff6b;
+}
+input.form-control::placeholder {
+    color: #ffffff6b;
+}
+.help-block {
+    color: #ffffff6b;
+}
+.badge-movie {
+    background-color: transparent;
+    box-shadow: 2px 2px 5px #00000061;
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.badge-movie.selected {
+    background-color: #ffa500a1 !important;
+}
+.badge-movie:hover:not(.selected) {
+    background-color: #00000061 !important;
+}
+
+
 </style>

@@ -2,13 +2,12 @@
     <div class="quiz">
         <div class="row">
             <div class="col-md-12">
-                <p class="lead">On this page it will soon be possible for you to take quizzies that other users has created :) </p>
+                <p class="lead">On this page you can take quizzes that other users has created :) </p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <!--<pre>{{ quizzes}}</pre>-->
                 <div v-if="quizzes" class="row">
                     <div class="col-md-4" v-for="quiz in quizzes" :key="quiz._id">
                         <div class="panel panel-default">

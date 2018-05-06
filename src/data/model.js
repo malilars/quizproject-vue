@@ -7,12 +7,7 @@
         this.quiz = quizFromApi;
         console.log("Lyckades läggaa till quiz");
     };
-
-    this.getQuizById = function()
-    {
-
-    };
-
+    
     this.getQuiz = function(){
 
         console.log("Hämtar quiz från model");

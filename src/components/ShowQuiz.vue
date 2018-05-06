@@ -10,46 +10,45 @@
             <div v-if="current">
                 <div class="row text-center">
                     <div class="col-md-6 col-md-push-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4>{{ answered.length+1 }} / {{ answered.length + response.quiz.length }} </h4>
-                                <h3>{{ current.question}}</h3>
+                        <div class="question">
+                            <h4>{{ answered.length+1 }} / {{ answered.length + response.quiz.length }} </h4>
+                            <h3 class="heading">{{ current.question}}</h3>
+
+                            <div v-for="alternative in current.alternatives" :key="alternative" class="alternatives">
+                                <label>
+                                    <input type="radio" :value="alternative" v-model="currentAnswer">
+                                    {{ alternative }}
+                                </label>
                             </div>
-                            <div class="panel-body">
-                                <h4>{{ current.type }}</h4>
-                                <div v-for="alternative in current.alternatives" :key="alternative">
-                                    <label>
-                                        {{ alternative }}
-                                        <input type="radio" :value="alternative" v-model="currentAnswer">
-                                    </label>
-                                </div>
-                                <button class="btn btn-default" @click="post()">
-                                    Post
-                                </button>
-                            </div>
+
+                            <button class="btn btn-danger btn-lg btn-block mb-5" @click="post()" :disabled="currentAnswer == ''">
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div v-else>
-                <h2>We are done!</h2>
-                <p>
+                <h1>We are done!</h1>
+                <p class="lead">
                     You got {{ score }} correct answers out of {{ answered.length }}! That is {{ Math.round(100 * (score / answered.length)) }}% correct answers.
                 </p>
 
-                <ul class="list-group">
-                    <li v-for="question in answered" class="list-group-item" :class="{ 'list-group-item-success' : question.answer == question.correctAnswer, 'list-group-item-danger' : question.answer != question.correctAnswer }">
-                        <p>
+                <div class="col-md-6 col-md-push-3">
+                    <div v-for="question in answered" :key="question.question">
+                        <h3 class="heading">
                             {{ question.question }}
-                        </p>
-                        <p>
-                            <strong>Correct answer: {{ question.correctAnswer }}</strong>
-                        </p>
-                        <p>
-                            <strong>Your answer: {{ question.answer }}</strong>
-                        </p>
-                    </li>
-                </ul>
+                        </h3>
+                        <div class="alert" :class="{ 'alert-success' : question.answer == question.correctAnswer, 'alert-danger' : question.answer != question.correctAnswer }">
+                            <p>
+                                <strong>Correct answer: {{ question.correctAnswer }}</strong>
+                            </p>
+                            <p>
+                                <strong>Your answer: {{ question.answer }}</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>        
     </div>
@@ -68,13 +67,20 @@
         methods: {
             post: function()
             {
+                //Put the "current" question as the answered
                 var answered = this.response.quiz.shift();
+                //Set the answer the user did on this question 
+                //to be able to correct it later. Also clear
+                //it to prepare for showing the next one.
                 answered.answer = this.currentAnswer;
+                this.currentAnswer = '';
+                //Push this one to the answered array
                 this.answered.push(answered);
 
+                //If the current question is null, we're done here!
                 if (this.current == null)
                 {
-                    alert("Nu är vi färdiga");
+                    //
                 }
             },
         },
@@ -97,8 +103,7 @@
 
                 return this.answered.reduce(function(count, item) {
 
-                    console.log(count);
-                    //If we have the correct answer
+//If we have the correct answer
                     if (item.answer == item.correctAnswer)
                     {
                         return count + 1;
@@ -126,5 +131,17 @@
 <style>
     .quiz {
         text-align: center
+    }
+    .alternatives {
+        text-align: left;
+    }
+    .alternatives label {
+        margin-bottom: 25px;
+        border-bottom: 1px solid #ffffff6b;
+        padding-bottom: 10px;
+        display: block;
+    }
+    .alternatives label input {
+        margin-right: 10px;
     }
 </style>
