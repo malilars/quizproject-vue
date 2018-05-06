@@ -4,7 +4,6 @@ import Welcome from '@/components/Welcome'
 import ShowQuiz from '@/components/ShowQuiz'
 import QuizOptions from '@/components/QuizOptions'
 import TakeQuiz from '@/components/TakeQuiz'
-import { modelInstance } from "@/data/model";
 
 Vue.use(Router)
 
@@ -13,15 +12,12 @@ export default new Router({
     {
       path: '/',
       name: 'Welcome',
-      component: Welcome,
-      props: {model : modelInstance}
-
+      component: Welcome
     },
     {
       path: '/quiz-options',
       name: 'quiz-options',
-      component: QuizOptions,
-      props: {model : modelInstance}
+      component: QuizOptions
     },
     {
       path: '/show-quiz/:id',

@@ -85,6 +85,9 @@
             },
         },
         computed: {
+            /**
+             * The Current Question.
+             */
             current: function()
             {
                 if (this.response.quiz && this.response.quiz.length > 0)
@@ -94,6 +97,9 @@
 
                 return null;
             },
+            /**
+             * The accumulated score.
+             */
             score: function()
             {
                 if (this.answered.length == 0)
@@ -102,13 +108,12 @@
                 }
 
                 return this.answered.reduce(function(count, item) {
-
-//If we have the correct answer
+                    //If we have the correct answer
                     if (item.answer == item.correctAnswer)
                     {
                         return count + 1;
                     }
-
+                    
                     return count;
                 }, 0);
 

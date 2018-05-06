@@ -70,7 +70,7 @@ nav.navbar {
   border: none;
 }
   .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
-    color: #ffffff9c;
+    color: #ffffff9c !important;
   }
   .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:active {
     color: #fff;
