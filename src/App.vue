@@ -3,19 +3,27 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">The Quiz App</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">The Quiz App</a>
         </div>
-        <ul class="nav navbar-nav">
-          <li>
-            <router-link to="/">Home</router-link>
-          </li>
-          <li>
-            <router-link to="/quiz-options">Create new quiz</router-link>
-          </li>
-          <li>
-            <router-link to="/take-quiz">Show all quizzes</router-link>          
-          </li>
-        </ul>
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+            <li>
+              <router-link to="/">Home</router-link>
+            </li>
+            <li>
+              <router-link to="/quiz-options">Create new quiz</router-link>
+            </li>
+            <li>
+              <router-link to="/take-quiz">Show all quizzes</router-link>          
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div id="app" class="container">
@@ -58,7 +66,16 @@ body {
 
 nav.navbar {
   border-radius: 0px;
+  background:none;
+  border: none;
 }
+  .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+    color: #ffffff9c;
+  }
+  .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:active {
+    color: #fff;
+    text-decoration: underline;
+  }
 .splash h1 {
   color: #fff !important;
   font-size: 100px;

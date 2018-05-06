@@ -54,8 +54,7 @@
 </template>
 
 <script>
-  export default {
-    props: ['model'],  
+  export default { 
     data() {
       return {
           quizName: '',
@@ -101,8 +100,8 @@
     },
     mounted() {
         this.genres = [
-            {"id": 28,"name": "Action", selected: true},
-            {"id": 12,"name": "Adventure", selected: true},
+            {"id": 28,"name": "Action", selected: false},
+            {"id": 12,"name": "Adventure", selected: false},
             {"id": 16, "name": "Animation", selected: false},
             {"id": 35, "name": "Comedy", selected: false},
             {"id": 80, "name": "Crime", selected: false},
